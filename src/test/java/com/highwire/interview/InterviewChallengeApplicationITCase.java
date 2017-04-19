@@ -1,11 +1,5 @@
 package com.highwire.interview;
 
-import com.highwire.interview.model.FactCategory;
-import com.highwire.interview.repository.FactCategoryRepository;
-import com.highwire.interview.service.FactService;
-
-import javax.validation.ConstraintViolationException;
-
 import org.apache.commons.io.IOUtils;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -25,6 +19,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.highwire.interview.model.Fact;
+import com.highwire.interview.model.FactCategory;
+import com.highwire.interview.repository.FactCategoryRepository;
+import com.highwire.interview.service.FactService;
 
 /**
  * Level 1.

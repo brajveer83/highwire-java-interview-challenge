@@ -2,8 +2,6 @@ package com.highwire.interview.controllers;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.highwire.interview.model.Fact;
-import com.highwire.interview.model.FactCategory;
 import com.highwire.interview.service.FactReportService;
 import com.highwire.interview.service.FactService;
 
@@ -51,17 +48,5 @@ public class FactApiController {
     	Fact newFact = this.factService.createFact(fact);
 		return new ResponseEntity<Fact>(newFact, HttpStatus.CREATED);
     }
-    
-    /**
-     * Uncomment this code if you want to create some initial data on startup for testing endpoints.
-     */
-    @PostConstruct
-    public void createInitialEntities() {
-        this.factService.createFact(new Fact("The sky is blue", new FactCategory("science")));
-        this.factService.createFact(new Fact("Grass is green", new FactCategory("science")));
-        this.factService.createFact(new Fact("I think, therefore I am", new FactCategory("philosophy")));
-        this.factService.createFact(new Fact("I think, but I am not sure", new FactCategory("computing")));
-    }
-    
     
 }
