@@ -2,6 +2,7 @@ package com.highwire.interview.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ public class FactCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "factCategoryId")
     private Long id;
     
     @OneToMany(fetch = FetchType.LAZY)

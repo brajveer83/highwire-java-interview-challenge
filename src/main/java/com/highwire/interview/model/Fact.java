@@ -3,10 +3,12 @@ package com.highwire.interview.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -17,6 +19,7 @@ public class Fact {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "factId") 
     private Long id;
 
     private Date creationDate;
@@ -24,12 +27,14 @@ public class Fact {
     private String factText;
     
     @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="factCategoryId", unique=true)
     private FactCategory factCategory;
     
     /**
      * Blank constructor for use by JPA.
      */
     public Fact() {
+    	this.creationDate = new Date();
     }
 
     /**
@@ -38,6 +43,7 @@ public class Fact {
      * @param category the fact's category for example: "Geography"
      */
     public Fact(String factText, FactCategory category) {
+    	this.factText = factText;
         this.creationDate = new Date();
         this.factCategory = category;
     }
@@ -69,4 +75,17 @@ public class Fact {
     public FactCategory getFactCategory() {
         return factCategory;
     }
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public void setFactText(String factText) {
+		this.factText = factText;
+	}
+
+	public void setFactCategory(FactCategory factCategory) {
+		this.factCategory = factCategory;
+	}
+    
 }

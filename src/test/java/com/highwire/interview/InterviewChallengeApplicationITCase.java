@@ -3,6 +3,9 @@ package com.highwire.interview;
 import com.highwire.interview.model.FactCategory;
 import com.highwire.interview.repository.FactCategoryRepository;
 import com.highwire.interview.service.FactService;
+
+import javax.validation.ConstraintViolationException;
+
 import org.apache.commons.io.IOUtils;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -100,9 +103,29 @@ public class InterviewChallengeApplicationITCase extends AbstractTransactionalJU
      */
     @Test
     public void testNonMultipleFactCategories() {
-        factService.createFact(new Fact("Cats have four legs", new FactCategory("animals")));
+    	/*boolean error = false;
+    	Exception exception = null;
+        try {
+    	factService.createFact(new Fact("Cats have four legs", new FactCategory("animals")));
         factService.createFact(new Fact("Birds have two legs", new FactCategory("animals")));
-        
+        } catch(Throwable e) {
+        	error = true;
+        } finally {
+        	if (error) {
+        		 Assert.assertTrue(exception instanceof ConstraintViolationException);
+        		 return;
+        	}
+        }*/
+    	Fact fact = new Fact();
+    	FactCategory factCategroy = new FactCategory("animals");
+    	fact.setFactCategory(factCategroy);
+    	fact.setFactText("Cats have four legs");
+    	factService.createFact(fact);
+    	fact = new Fact();
+    	fact.setFactCategory(factCategroy);
+    	fact.setFactText("Birds have two legs");
+    	factService.createFact(fact);
+    	
         Assert.assertEquals(2, this.factService.getAllFacts().size());
         Assert.assertEquals(1, this.factCategoryRepository.count());
     }
