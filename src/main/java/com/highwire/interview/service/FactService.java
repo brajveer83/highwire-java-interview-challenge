@@ -43,14 +43,14 @@ public class FactService {
         return Lists.newArrayList(this.factRepository.findAll());
     }
     
-    /**
-     * Uncomment this code if you want to create some initial data on startup for testing endpoints.
-     */
-    @PostConstruct
-    public void createInitialEntities() {
-        this.createFact(new Fact("The sky is blue", new FactCategory("science")));
-        this.createFact(new Fact("Grass is green", new FactCategory("science")));
-        this.createFact(new Fact("I think, therefore I am", new FactCategory("philosophy")));
-        this.createFact(new Fact("I think, but I am not sure", new FactCategory("computing")));
-    }
+//    /**
+//     * Uncomment this code if you want to create some initial data on startup for testing endpoints.
+//     */
+//    @PostConstruct
+//    public void createInitialEntities() {
+//        this.createFact(new Fact("The sky is blue", new FactCategory("science")));
+//        this.createFact(new Fact("Grass is green", new FactCategory("science")));
+//        this.createFact(new Fact("I think, therefore I am", new FactCategory("philosophy")));
+//        this.createFact(new Fact("I think, but I am not sure", new FactCategory("computing")));
+//    }
 }

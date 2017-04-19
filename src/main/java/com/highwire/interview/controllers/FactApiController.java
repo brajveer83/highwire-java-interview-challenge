@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.highwire.interview.model.Fact;
+import com.highwire.interview.model.Report;
 import com.highwire.interview.service.FactReportService;
 import com.highwire.interview.service.FactService;
 
@@ -37,10 +38,10 @@ public class FactApiController {
     }
 
     @RequestMapping(value = "/report",method = RequestMethod.GET)
-    public List<Fact> getFactsReport() {
+    public List<Report> getFactsReport() {
     	List<Fact> facts = this.factService.getAllFacts();
-    	factReportService.generateReport(facts);
-		return facts;
+    	List<Report> reports = factReportService.generateReport(facts);
+		return reports;
     }
     
     @RequestMapping(method = RequestMethod.POST)

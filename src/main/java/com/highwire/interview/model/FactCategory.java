@@ -53,4 +53,14 @@ public class FactCategory {
     public Long getId() {
         return this.id;
     }
+
+	public Set<Fact> getFacts() {
+		return facts;
+	}
+
+	public void setFacts(Set<Fact> facts) {
+		this.facts = facts;
+	}
+    
+    
 }
