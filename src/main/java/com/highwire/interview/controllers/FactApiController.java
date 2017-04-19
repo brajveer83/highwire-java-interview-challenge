@@ -46,6 +46,12 @@ public class FactApiController {
 		return facts;
     }
     
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Fact> createFact( @RequestBody Fact fact) {
+    	Fact newFact = this.factService.createFact(fact);
+		return new ResponseEntity<Fact>(newFact, HttpStatus.CREATED);
+    }
+    
     /**
      * Uncomment this code if you want to create some initial data on startup for testing endpoints.
      */
